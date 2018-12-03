@@ -4,15 +4,16 @@ from matplotlib import pyplot as plt
 from time import sleep
 
 
-imagem1 = cv.imread("gandalf.jpg", 1)
-imagem2 = cv.imread("gandalfrosa.jpeg", 1)
+img1 = cv.imread("moon.jpg", 1)
+img2 = cv.imread("huble.jpeg", 1)
 
-img1 = cv.resize(imagem1, (400,400))
-img2 = cv.resize(imagem2, (400,400))
+x = 0.1
+while x <= 1:
+    img1[600:600] *= x
+    img2[600:600] *= (1 - x)
+    novaimg[600:600] = img1[:] + img2[:]
+    x+=0.1
+    cv.imshow("imagens", novaimg)
+    cv.waitKey(0)
 
-novaimg = img1 + img2
-
-cv.imshow("imagens", novaimg)
-
-cv.waitKey(0)
 cv.destroyAllWindows()
